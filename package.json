@@ -8,7 +8,7 @@
     "bcryptjs": "latest",
     "body-parser": "^1.8.1",
     "compression": "^1.6.0",
-    "cors": "^2.4.2",
+    "cors": "latest",
     "express": "latest",
     "jwt-simple": "^0.2.0",
     "moment": "^2.8.3",
