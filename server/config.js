@@ -1,7 +1,7 @@
 module.exports = {
   // App Settings
-  MONGO_URI: process.env.MONGO_URI || 'localhost',
-  TOKEN_SECRET: process.env.TOKEN_SECRET || 'YOUR_UNIQUE_JWT_TOKEN_SECRET',
+  MONGO_URI: process.env.MONGO_URI || 'heroku_d4m1dfdj:cbu9ao761pm92h2m3g8tfmfhps@ds027415.mongolab.com:27415/heroku_d4m1dfdj',
+  TOKEN_SECRET: process.env.TOKEN_SECRET || 'diabloSnowboarder33',
 
   // OAuth 2.0
   FACEBOOK_SECRET: process.env.FACEBOOK_SECRET || 'YOUR_FACEBOOK_CLIENT_SECRET',
