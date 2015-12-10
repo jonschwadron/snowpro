@@ -5,16 +5,19 @@
     "start": "node server/server.js"
   },
   "dependencies": {
-    "bcryptjs": "latest",
-    "body-parser": "^1.8.1",
+    "async": "^1.5.0",
+    "bcryptjs": "^2.3.0",
+    "body-parser": "^1.14.1",
+    "colors": "^1.1.2",
     "compression": "^1.6.0",
-    "cors": "latest",
-    "express": "latest",
-    "jwt-simple": "^0.2.0",
-    "moment": "^2.8.3",
+    "cors": "^2.7.1",
+    "express": "^4.13.3",
+    "jwt-simple": "^0.3.1",
+    "moment": "^2.10.6",
     "mongod": "latest",
-    "mongoose": "latest",
-    "request": "^2.44.0"
+    "mongoose": "^4.2.4",
+    "morgan": "^1.6.1",
+    "request": "^2.65.0"
   },
   "devDependencies": {
     "gulp": "^3.8.10",
