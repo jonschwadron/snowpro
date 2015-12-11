@@ -173,13 +173,13 @@ app.put('/api/gears', ensureAuthenticated, function(req, res) {
     }
     user.snowboardBrand = req.body.snowboardBrand || user.snowboardBrand;
     user.snowboardModel = req.body.snowboardModel || user.snowboardModel;
-    user.snowboardSize = req.body.snowboardSize || user.snowboardSize;
-    user.bindingsBrand = req.body.bindingsBrand || user.bindingsBrand;
-    user.bindingsModel = req.body.bindingsBrand || user.bindingsBrand;
-    user.bindingsSize = req.body.bindingsBrand || user.bindingsBrand;
-    user.bootsBrand = req.body.bootsBrand || user.bootsBrand;
-    user.bootsModel = req.body.bootsBrand || user.bootsBrand;
-    user.bootsSize = req.body.bootsBrand || user.bootsBrand;
+    user.snowboardSize  = req.body.snowboardSize  || user.snowboardSize;
+    user.bindingsBrand  = req.body.bindingsBrand  || user.bindingsBrand;
+    user.bindingsModel  = req.body.bindingsModel  || user.bindingsModel;
+    user.bindingsSize   = req.body.bindingsSize  || user.bindingsSize;
+    user.bootsBrand     = req.body.bootsBrand     || user.bootsBrand;
+    user.bootsModel     = req.body.bootsModel     || user.bootsModel;
+    user.bootsSize      = req.body.bootsSize      || user.bootsSize;
     user.save(function(err) {
       res.status(200).end();
     });
