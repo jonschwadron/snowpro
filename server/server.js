@@ -26,20 +26,12 @@ var userSchema = new mongoose.Schema({
   password: { type: String, select: false },
   displayName: String,
   picture: String,
-  bitbucket: String,
-  facebook: String,
-  foursquare: String,
-  google: String,
-  github: String,
   instagram: String,
-  linkedin: String,
-  live: String,
-  yahoo: String,
-  twitter: String,
-  twitch: String,
-  snowboard: String,
-  boots: String,
-  bindings: String
+  snowboard: String
+});
+
+var snowboardSchema = new mongoose.Schema({
+  snowboard: String
 });
 
 userSchema.pre('save', function(next) {
@@ -62,6 +54,7 @@ userSchema.methods.comparePassword = function(password, done) {
 };
 
 var User = mongoose.model('User', userSchema);
+var Snowboard = mongoose.model('Snowboard', snowboardSchema);
 
 mongoose.connect(config.MONGO_URI);
 mongoose.connection.on('error', function(err) {
@@ -181,6 +174,39 @@ app.put('/api/gears', ensureAuthenticated, function(req, res) {
     user.snowboard = req.body.snowboard || user.snowboard;
     user.bindings = req.body.bindings || user.bindings;
     user.boots = req.body.boots || user.boots;
+    user.save(function(err) {
+      res.status(200).end();
+    });
+  });
+});
+
+/*
+ |--------------------------------------------------------------------------
+ | GET /api/snowboard
+ |--------------------------------------------------------------------------
+ */
+app.get('/api/snowboard', ensureAuthenticated, function(req, res) {
+  Snowboard.findById(req.snowboard, function(err, snowboard) {
+    res.send(snowboard);
+  });
+});
+
+/*
+ |--------------------------------------------------------------------------
+ | PUT /api/snowboard
+ |--------------------------------------------------------------------------
+ */
+app.put('/api/snowboard', ensureAuthenticated, function(req, res) {
+  Snowboard.findById(req.snowboard, function(err, snowboard) {
+    if (!snowboard) {
+      return res.status(400).send({ message: 'Snowboard not found' });
+    }
+    // user.snowboard = req.body.snowboard || user.snowboard;
+    // user.bindings = req.body.bindings || user.bindings;
+    // user.boots = req.body.boots || user.boots;
+    snowboard.snowboards.brand = req.body.snowboards.brand || snowboard.snowboards.brand;
+    snowboard.snowboards.brand.model = req.body.snowboards.brand.model || snowboard.snowboards.brand.model;
+    snowboard.snowboards.brand.model.size = req.body.snowboards.brand.model.size || snowboard.snowboards.brand.model.size;
     user.save(function(err) {
       res.status(200).end();
     });
