@@ -191,9 +191,6 @@ app.post('/auth/signup', function(req, res) {
       displayName: req.body.displayName,
       email: req.body.email,
       password: req.body.password
-      snowboard: "",
-      bindings: "",
-      boots: ""
     });
     user.save(function(err, result) {
       if (err) {
