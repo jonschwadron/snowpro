@@ -27,6 +27,9 @@ var userSchema = new mongoose.Schema({
   displayName: String,
   picture: String,
   instagram: String,
+  snowboard: String,
+  binding: String,
+  boots: String
 });
 
 var snowboardSchema = new mongoose.Schema({
@@ -140,9 +143,6 @@ app.put('/api/me', ensureAuthenticated, function(req, res) {
     }
     user.displayName = req.body.displayName || user.displayName;
     user.email = req.body.email || user.email;
-    user.snowboard = req.body.snowboard || user.snowboard;
-    user.bindings = req.body.bindings || user.bindings;
-    user.boots = req.body.boots || user.boots;
     user.save(function(err) {
       res.status(200).end();
     });
@@ -178,43 +178,6 @@ app.put('/api/gears', ensureAuthenticated, function(req, res) {
     });
   });
 });
-
-/*
- |--------------------------------------------------------------------------
- | GET /api/snowboard
- |--------------------------------------------------------------------------
- */
-app.get('/api/snowboard', ensureAuthenticated, function(req, res) {
-  Snowboard.findById(req.snowboard, function(err, snowboard) {
-    res.send(snowboard);
-  });
-});
-
-/*
- |--------------------------------------------------------------------------
- | PUT /api/snowboard
- |--------------------------------------------------------------------------
- */
-app.put('/api/snowboard', ensureAuthenticated, function(req, res) {
-  Snowboard.findById(req.snowboard, function(err, snowboard) {
-    if (!snowboard) {
-      return res.status(400).send({ message: 'Snowboard not found' });
-    }
-    // user.snowboard = req.body.snowboard || user.snowboard;
-    // user.bindings = req.body.bindings || user.bindings;
-    // user.boots = req.body.boots || user.boots;
-    snowboard.snowboardBrand = req.body.snowboardBrand || snowboard.snowboardBrand;
-    snowboard.snowboardBrandModel = req.body.snowboardBrandModel|| snowboard.snowboardBrandModel;
-    snowboard.snowboardBrandModelSize = req.body.snowboardBrandModelSize || snowboard.snowboardBrandModelSize;
-
-
-
-    user.save(function(err) {
-      res.status(200).end();
-    });
-  });
-});
-
 
 /*
  |--------------------------------------------------------------------------
