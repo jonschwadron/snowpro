@@ -171,9 +171,9 @@ app.put('/api/snowboard', ensureAuthenticated, function(req, res) {
     if (!user) {
       return res.status(400).send({ message: 'User not found' });
     }
-    user.snowboardBrand = req.body.snowboardBrand || "";
-    user.snowboardModel = req.body.snowboardModel || "";
-    user.snowboardSize  = req.body.snowboardSize  || "";
+    user.snowboardBrand = req.body.snowboardBrand || "none available";
+    user.snowboardModel = req.body.snowboardModel || "none available";
+    user.snowboardSize  = req.body.snowboardSize  || "none available";
     user.save(function(err) {
       res.status(200).end();
     });
@@ -201,9 +201,9 @@ app.put('/api/bindings', ensureAuthenticated, function(req, res) {
     if (!user) {
       return res.status(400).send({ message: 'User not found' });
     }
-    user.bindingsBrand = req.body.bindingsBrand || user.bindingsBrand;
-    user.bindingsModel = req.body.bindingsModel || user.bindingsModel;
-    user.bindingsSize  = req.body.bindingsSize  || user.bindingsSize;
+    user.bindingsBrand = req.body.bindingsBrand || "none available";
+    user.bindingsModel = req.body.bindingsModel || "none available";
+    user.bindingsSize  = req.body.bindingsSize  || "none available";
     user.save(function(err) {
       res.status(200).end();
     });
@@ -231,9 +231,9 @@ app.put('/api/boots', ensureAuthenticated, function(req, res) {
     if (!user) {
       return res.status(400).send({ message: 'User not found' });
     }
-    user.bootsBrand = req.body.bootsBrand || user.bootsBrand;
-    user.bootsModel = req.body.bootsModel || user.bootsModel;
-    user.bootsSize  = req.body.bootsSize  || user.bootsSize;
+    user.bootsBrand = req.body.bootsBrand || "none available";
+    user.bootsModel = req.body.bootsModel || "none available";
+    user.bootsSize  = req.body.bootsSize  || "none available";
     user.save(function(err) {
       res.status(200).end();
     });
