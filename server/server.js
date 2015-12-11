@@ -35,7 +35,7 @@ var userSchema = new mongoose.Schema({
   bindingsSize: String,
   bootsBrand: String,
   bootsModel: String,
-  bootsSize: String,
+  bootsSize: String
 });
 
 userSchema.pre('save', function(next) {
