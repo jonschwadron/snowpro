@@ -27,7 +27,6 @@ var userSchema = new mongoose.Schema({
   displayName: String,
   picture: String,
   instagram: String,
-  snowboard: String
 });
 
 var snowboardSchema = new mongoose.Schema({
@@ -204,9 +203,12 @@ app.put('/api/snowboard', ensureAuthenticated, function(req, res) {
     // user.snowboard = req.body.snowboard || user.snowboard;
     // user.bindings = req.body.bindings || user.bindings;
     // user.boots = req.body.boots || user.boots;
-    snowboard.snowboards.brand = req.body.snowboards.brand || snowboard.snowboards.brand;
-    snowboard.snowboards.brand.model = req.body.snowboards.brand.model || snowboard.snowboards.brand.model;
-    snowboard.snowboards.brand.model.size = req.body.snowboards.brand.model.size || snowboard.snowboards.brand.model.size;
+    snowboard.snowboardBrand = req.body.snowboardBrand || snowboard.snowboardBrand;
+    snowboard.snowboardBrandModel = req.body.snowboardBrandModel|| snowboard.snowboardBrandModel;
+    snowboard.snowboardBrandModelSize = req.body.snowboardBrandModelSize || snowboard.snowboardBrandModelSize;
+
+
+
     user.save(function(err) {
       res.status(200).end();
     });
