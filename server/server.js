@@ -36,7 +36,10 @@ var userSchema = new mongoose.Schema({
   live: String,
   yahoo: String,
   twitter: String,
-  twitch: String
+  twitch: String,
+  snowboard: String,
+  boots: String,
+  bindings: String
 });
 
 userSchema.pre('save', function(next) {
@@ -191,6 +194,9 @@ app.post('/auth/signup', function(req, res) {
       displayName: req.body.displayName,
       email: req.body.email,
       password: req.body.password
+      snowboard: {},
+      bindings: {},
+      boots: {}
     });
     user.save(function(err, result) {
       if (err) {
