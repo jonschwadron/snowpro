@@ -218,8 +218,7 @@ app.post('/auth/signup', function(req, res) {
     var user = new User({
       displayName: req.body.displayName,
       email: req.body.email,
-      password: req.body.password,
-      snowboardBrand: "Salomon"
+      password: req.body.password
     });
     user.save(function(err, result) {
       if (err) {
