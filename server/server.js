@@ -27,13 +27,15 @@ var userSchema = new mongoose.Schema({
   displayName: String,
   picture: String,
   instagram: String,
-  snowboard: String,
-  binding: String,
-  boots: String
-});
-
-var snowboardSchema = new mongoose.Schema({
-  snowboard: String
+  snowboardBrand: String,
+  snowboardModel: String,
+  snowboardSize: String,
+  bindingsBrand: String,
+  bindingsModel: String,
+  bindingsSize: String,
+  bootsBrand: String,
+  bootsModel: String,
+  bootsSize: String,
 });
 
 userSchema.pre('save', function(next) {
@@ -56,7 +58,6 @@ userSchema.methods.comparePassword = function(password, done) {
 };
 
 var User = mongoose.model('User', userSchema);
-var Snowboard = mongoose.model('Snowboard', snowboardSchema);
 
 mongoose.connect(config.MONGO_URI);
 mongoose.connection.on('error', function(err) {
@@ -170,9 +171,15 @@ app.put('/api/gears', ensureAuthenticated, function(req, res) {
     if (!user) {
       return res.status(400).send({ message: 'User not found' });
     }
-    user.snowboard = req.body.snowboard || user.snowboard;
-    user.bindings = req.body.bindings || user.bindings;
-    user.boots = req.body.boots || user.boots;
+    user.snowboardBrand = req.body.snowboardBrand || user.snowboardBrand;
+    user.snowboardModel = req.body.snowboardModel || user.snowboardModel;
+    user.snowboardSize = req.body.snowboardSize || user.snowboardSize;
+    user.bindingsBrand = req.body.bindingsBrand || user.bindingsBrand;
+    user.bindingsModel = req.body.bindingsBrand || user.bindingsBrand;
+    user.bindingsSize = req.body.bindingsBrand || user.bindingsBrand;
+    user.bootsBrand = req.body.bootsBrand || user.bootsBrand;
+    user.bootsModel = req.body.bootsBrand || user.bootsBrand;
+    user.bootsSize = req.body.bootsBrand || user.bootsBrand;
     user.save(function(err) {
       res.status(200).end();
     });
