@@ -176,7 +176,7 @@ app.put('/api/gears', ensureAuthenticated, function(req, res) {
     user.snowboardSize  = req.body.snowboardSize  || user.snowboardSize;
     user.bindingsBrand  = req.body.bindingsBrand  || user.bindingsBrand;
     user.bindingsModel  = req.body.bindingsModel  || user.bindingsModel;
-    user.bindingsSize   = req.body.bindingsSize  || user.bindingsSize;
+    user.bindingsSize   = req.body.bindingsSize   || user.bindingsSize;
     user.bootsBrand     = req.body.bootsBrand     || user.bootsBrand;
     user.bootsModel     = req.body.bootsModel     || user.bootsModel;
     user.bootsSize      = req.body.bootsSize      || user.bootsSize;
