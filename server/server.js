@@ -145,6 +145,12 @@ app.put('/api/me', ensureAuthenticated, function(req, res) {
     }
     user.displayName = req.body.displayName || user.displayName;
     user.email = req.body.email || user.email;
+    user.snowboard = req.body.snowboard || user.snowboard;
+    user.bindings = req.body.bindings || user.bindings;
+    user.boots = req.body.boots || user.boots;
+
+
+
     user.save(function(err) {
       res.status(200).end();
     });
