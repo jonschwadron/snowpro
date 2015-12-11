@@ -218,7 +218,16 @@ app.post('/auth/signup', function(req, res) {
     var user = new User({
       displayName: req.body.displayName,
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
+      snowboardBrand: "not specified",
+      snowboardModel: "not specified",
+      snowboardSize: "not specified",
+      bindingsBrand: "not specified",
+      bindingsModel: "not specified",
+      bindingsSize: "not specified",
+      bootsBrand: "not specified",
+      bootsModel: "not specified",
+      bootsSize: "not specified"
     });
     user.save(function(err, result) {
       if (err) {
