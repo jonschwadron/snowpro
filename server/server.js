@@ -151,9 +151,6 @@ app.put('/api/me', ensureAuthenticated, function(req, res) {
     user.snowboard = req.body.snowboard || user.snowboard;
     user.bindings = req.body.bindings || user.bindings;
     user.boots = req.body.boots || user.boots;
-
-
-
     user.save(function(err) {
       res.status(200).end();
     });
@@ -194,9 +191,9 @@ app.post('/auth/signup', function(req, res) {
       displayName: req.body.displayName,
       email: req.body.email,
       password: req.body.password
-      snowboard: {},
-      bindings: {},
-      boots: {}
+      snowboard: "",
+      bindings: "",
+      boots: ""
     });
     user.save(function(err, result) {
       if (err) {
