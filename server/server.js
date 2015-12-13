@@ -126,7 +126,7 @@ function createJWT(user) {
  | GET /api/me
  |--------------------------------------------------------------------------
  */
-app.get('/api/me', ensureAuthenticated, function(req, res) {
+app.get('/api/profile', ensureAuthenticated, function(req, res) {
   User.findById(req.user, function(err, user) {
     res.send(user);
   });
@@ -137,7 +137,7 @@ app.get('/api/me', ensureAuthenticated, function(req, res) {
  | PUT /api/me
  |--------------------------------------------------------------------------
  */
-app.put('/api/me', ensureAuthenticated, function(req, res) {
+app.put('/api/profile', ensureAuthenticated, function(req, res) {
   User.findById(req.user, function(err, user) {
     if (!user) {
       return res.status(400).send({ message: 'User not found' });
