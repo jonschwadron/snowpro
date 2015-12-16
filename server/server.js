@@ -27,6 +27,41 @@ var userSchema = new mongoose.Schema({
   displayName: String,
   picture: String,
   instagram: String,
+  inventory: {
+    snowboard: {
+      size: Number,
+      brand: String,
+      model: String,
+      review: {
+        created_at: Date,
+        updated_at: Date,
+        user_riding_style: String,
+        user_riding_ability: String,
+        would_recommend: String,
+        user_comment: String,
+        rating: {
+          flex: Number,
+          speed: Number,
+          switch: Number,
+          rails: Number,
+          pipe: Number,
+          carving: Number
+        }
+      }
+    },
+    bindings: {
+      size: Number,
+      brand: String,
+      model: String
+      link: String,
+    },
+    boots: {
+      size: Number,
+      brand: String,
+      model: String
+      link: String,
+    }
+  },
   snowboardBrand: String,
   snowboardModel: String,
   snowboardSize: String,
