@@ -42,10 +42,12 @@ var userSchema = new mongoose.Schema({
         rating: {
           flex: {type: Number, required: true, min: 1, max: 5},
           speed: {type: Number, required: true, min: 1, max: 5},
+          stability: {type: Number, required: true, min: 1, max: 5},
           switch: {type: Number, required: true, min: 1, max: 5},
-          rails: {type: Number, required: true, min: 1, max: 5},
-          pipe: {type: Number, required: true, min: 1, max: 5},
-          carving: {type: Number, required: true, min: 1, max: 5}
+          edge_control: {type: Number, required: true, min: 1, max: 5},
+          park: {type: Number, required: true, min: 1, max: 5},
+          all_mountain: {type: Number, required: true, min: 1, max: 5},
+          back_country: {type: Number, required: true, min: 1, max: 5}
         }
       }
     },
