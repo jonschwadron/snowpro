@@ -35,30 +35,30 @@ var userSchema = new mongoose.Schema({
       review: {
         created_at: Date,
         updated_at: Date,
-        user_riding_style: String,
-        user_riding_ability: String,
-        would_recommend: String,
-        user_comment: String,
+        user_riding_style: {type: String, required: true},
+        user_riding_ability: {type: String, required: true},
+        would_recommend: {type: String, required: true},
+        user_comment: {type: String, required: true},
         rating: {
-          flex: Number,
-          speed: Number,
-          switch: Number,
-          rails: Number,
-          pipe: Number,
-          carving: Number
+          flex: {type: Number, required: true, min: 1, max: 5},
+          speed: {type: Number, required: true, min: 1, max: 5},
+          switch: {type: Number, required: true, min: 1, max: 5},
+          rails: {type: Number, required: true, min: 1, max: 5},
+          pipe: {type: Number, required: true, min: 1, max: 5},
+          carving: {type: Number, required: true, min: 1, max: 5}
         }
       }
     },
     bindings: {
       size: Number,
       brand: String,
-      model: String
+      model: String,
       link: String,
     },
     boots: {
       size: Number,
       brand: String,
-      model: String
+      model: String,
       link: String,
     }
   },
