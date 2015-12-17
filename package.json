@@ -1,6 +1,6 @@
 {
   "name": "snowpro",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "start": "node server/server.js"
   },
@@ -14,7 +14,6 @@
     "express": "^4.13.3",
     "jwt-simple": "^0.3.1",
     "moment": "^2.10.6",
-    "mongod": "latest",
     "mongoose": "^4.2.4",
     "morgan": "^1.6.1",
     "request": "^2.65.0"
@@ -30,9 +29,5 @@
     "gulp-ng-annotate": "^0.4.1",
     "gulp-recess": "^1.1.1",
     "gulp-uglify": "^1.0.2"
-  },
-  "engines": {
-    "node": "latest",
-    "npm": "latest"
   }
 }
