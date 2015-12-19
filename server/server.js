@@ -27,10 +27,11 @@ var userSchema = new mongoose.Schema({
   displayName: String,
   picture: String,
   instagram: String,
+  userType: String,
   inventory: {
     snowboard: {
       size: Number,
-      brand: String,
+      manufacturer: String,
       model: String,
       review: {
         created_at: Date,
