@@ -14,6 +14,7 @@
     "express": "^4.13.3",
     "jwt-simple": "^0.3.1",
     "moment": "^2.10.6",
+    "mongod": "latest",
     "mongoose": "^4.2.4",
     "morgan": "^1.6.1",
     "request": "^2.65.0"
@@ -32,6 +33,6 @@
   },
   "engines": {
     "node": "^5.1.1",
-    "npm": "latest"
+    "npm": "^3.5.2"
   }
 }
