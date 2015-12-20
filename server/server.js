@@ -161,17 +161,6 @@ function createJWT(user) {
 
 /*
  |--------------------------------------------------------------------------
- | GET /api/displayName
- |--------------------------------------------------------------------------
- */
-app.get('/api/displayName', function(req, res) {
-  User.findById(req.user, function(err, user) {
-    res.send(user.displayName);
-  });
-});
-
-/*
- |--------------------------------------------------------------------------
  | GET /api/me
  |--------------------------------------------------------------------------
  */
@@ -319,7 +308,6 @@ app.post('/auth/signup', function(req, res) {
       return res.status(409).send({ message: 'Email is already taken' });
     }
     var user = new User({
-      displayName: req.body.displayName,
       email: req.body.email,
       password: req.body.password
     });
