@@ -27,44 +27,44 @@ var userSchema = new mongoose.Schema({
   displayName: String,
   picture: String,
   instagram: String,
-  userType: String,
-  inventory: {
-    snowboard: {
-      size: Number,
-      manufacturer: String,
-      model: String,
-      review: {
-        created_at: Date,
-        updated_at: Date,
-        user_riding_style: {type: String, required: true},
-        user_riding_ability: {type: String, required: true},
-        would_recommend: {type: String, required: true},
-        user_comment: {type: String, required: true},
-        rating: {
-          flex: {type: Number, required: true, min: 1, max: 5},
-          speed: {type: Number, required: true, min: 1, max: 5},
-          stability: {type: Number, required: true, min: 1, max: 5},
-          switch: {type: Number, required: true, min: 1, max: 5},
-          edge_control: {type: Number, required: true, min: 1, max: 5},
-          park: {type: Number, required: true, min: 1, max: 5},
-          all_mountain: {type: Number, required: true, min: 1, max: 5},
-          back_country: {type: Number, required: true, min: 1, max: 5}
-        }
-      }
-    },
-    bindings: {
-      size: Number,
-      brand: String,
-      model: String,
-      link: String
-    },
-    boots: {
-      size: Number,
-      brand: String,
-      model: String,
-      link: String
-    }
-  },
+  // userType: String,
+  // inventory: {
+  //   snowboard: {
+  //     size: Number,
+  //     manufacturer: String,
+  //     model: String,
+  //     review: {
+  //       created_at: Date,
+  //       updated_at: Date,
+  //       user_riding_style: {type: String, required: true},
+  //       user_riding_ability: {type: String, required: true},
+  //       would_recommend: {type: String, required: true},
+  //       user_comment: {type: String, required: true},
+  //       rating: {
+  //         flex: {type: Number, required: true, min: 1, max: 5},
+  //         speed: {type: Number, required: true, min: 1, max: 5},
+  //         stability: {type: Number, required: true, min: 1, max: 5},
+  //         switch: {type: Number, required: true, min: 1, max: 5},
+  //         edge_control: {type: Number, required: true, min: 1, max: 5},
+  //         park: {type: Number, required: true, min: 1, max: 5},
+  //         all_mountain: {type: Number, required: true, min: 1, max: 5},
+  //         back_country: {type: Number, required: true, min: 1, max: 5}
+  //       }
+  //     }
+  //   },
+  //   bindings: {
+  //     size: Number,
+  //     brand: String,
+  //     model: String,
+  //     link: String
+  //   },
+  //   boots: {
+  //     size: Number,
+  //     brand: String,
+  //     model: String,
+  //     link: String
+  //   }
+  // },
   snowboardBrand: String,
   snowboardModel: String,
   snowboardSize: String,
@@ -209,9 +209,9 @@ app.put('/api/snowboard', ensureAuthenticated, function(req, res) {
     if (!user) {
       return res.status(400).send({ message: 'User not found' });
     }
-    user.snowboardBrand = req.body.snowboardBrand || user.snowboardBrand;
-    user.snowboardModel = req.body.snowboardModel || user.snowboardModel;
-    user.snowboardSize  = req.body.snowboardSize  || user.snowboardSize;
+    user.snowboardBrand = req.body.snowboardBrand;
+    user.snowboardModel = req.body.snowboardModel;
+    user.snowboardSize  = req.body.snowboardSize;
     user.save(function(err) {
       res.status(200).end();
     });
