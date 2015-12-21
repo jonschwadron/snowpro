@@ -56,13 +56,13 @@ var userSchema = new mongoose.Schema({
       size: Number,
       brand: String,
       model: String,
-      link: String,
+      link: String
     },
     boots: {
       size: Number,
       brand: String,
       model: String,
-      link: String,
+      link: String
     }
   },
   snowboardBrand: String,
@@ -209,9 +209,9 @@ app.put('/api/snowboard', ensureAuthenticated, function(req, res) {
     if (!user) {
       return res.status(400).send({ message: 'User not found' });
     }
-    user.snowboardBrand = req.body.snowboardBrand || "";
-    user.snowboardModel = req.body.snowboardModel || "";
-    user.snowboardSize  = req.body.snowboardSize  || "";
+    user.snowboardBrand = req.body.snowboardBrand || user.snowboardBrand;
+    user.snowboardModel = req.body.snowboardModel || user.snowboardModel;
+    user.snowboardSize  = req.body.snowboardSize  || user.snowboardSize;
     user.save(function(err) {
       res.status(200).end();
     });
@@ -239,9 +239,9 @@ app.put('/api/bindings', ensureAuthenticated, function(req, res) {
     if (!user) {
       return res.status(400).send({ message: 'User not found' });
     }
-    user.bindingsBrand = req.body.bindingsBrand || "";
-    user.bindingsModel = req.body.bindingsModel || "";
-    user.bindingsSize  = req.body.bindingsSize  || "";
+    user.bindingsBrand = req.body.bindingsBrand || user.bindingsBrand;
+    user.bindingsModel = req.body.bindingsModel || user.bindingsModel;
+    user.bindingsSize  = req.body.bindingsSize  || user.bindingsSize;
     user.save(function(err) {
       res.status(200).end();
     });
@@ -269,9 +269,9 @@ app.put('/api/boots', ensureAuthenticated, function(req, res) {
     if (!user) {
       return res.status(400).send({ message: 'User not found' });
     }
-    user.bootsBrand = req.body.bootsBrand || "";
-    user.bootsModel = req.body.bootsModel || "";
-    user.bootsSize  = req.body.bootsSize  || "";
+    user.bootsBrand = req.body.bootsBrand || user.bootsBrand;
+    user.bootsModel = req.body.bootsModel || user.bootsModel;
+    user.bootsSize  = req.body.bootsSize  || user.bootsSize;
     user.save(function(err) {
       res.status(200).end();
     });
