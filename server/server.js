@@ -50,7 +50,8 @@ var userSchema = new mongoose.Schema({
   //         all_mountain: {type: Number, required: true, min: 1, max: 5},
   //         back_country: {type: Number, required: true, min: 1, max: 5}
   //       }
-  //     }
+  //     },
+  //     ski {}
   //   },
   //   bindings: {
   //     size: Number,
@@ -239,9 +240,9 @@ app.put('/api/bindings', ensureAuthenticated, function(req, res) {
     if (!user) {
       return res.status(400).send({ message: 'User not found' });
     }
-    user.bindingsBrand = req.body.bindingsBrand || user.bindingsBrand;
-    user.bindingsModel = req.body.bindingsModel || user.bindingsModel;
-    user.bindingsSize  = req.body.bindingsSize  || user.bindingsSize;
+    user.bindingsBrand = req.body.bindingsBrand;
+    user.bindingsModel = req.body.bindingsModel;
+    user.bindingsSize  = req.body.bindingsSize;
     user.save(function(err) {
       res.status(200).end();
     });
@@ -269,9 +270,9 @@ app.put('/api/boots', ensureAuthenticated, function(req, res) {
     if (!user) {
       return res.status(400).send({ message: 'User not found' });
     }
-    user.bootsBrand = req.body.bootsBrand || user.bootsBrand;
-    user.bootsModel = req.body.bootsModel || user.bootsModel;
-    user.bootsSize  = req.body.bootsSize  || user.bootsSize;
+    user.bootsBrand = req.body.bootsBrand;
+    user.bootsModel = req.body.bootsModel;
+    user.bootsSize  = req.body.bootsSize;
     user.save(function(err) {
       res.status(200).end();
     });
