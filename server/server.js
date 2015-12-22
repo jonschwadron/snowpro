@@ -27,45 +27,6 @@ var userSchema = new mongoose.Schema({
   displayName: String,
   picture: String,
   instagram: String,
-  // userType: String,
-  // inventory: {
-  //   snowboard: {
-  //     size: Number,
-  //     manufacturer: String,
-  //     model: String,
-  //     review: {
-  //       created_at: Date,
-  //       updated_at: Date,
-  //       user_riding_style: {type: String, required: true},
-  //       user_riding_ability: {type: String, required: true},
-  //       would_recommend: {type: String, required: true},
-  //       user_comment: {type: String, required: true},
-  //       rating: {
-  //         flex: {type: Number, required: true, min: 1, max: 5},
-  //         speed: {type: Number, required: true, min: 1, max: 5},
-  //         stability: {type: Number, required: true, min: 1, max: 5},
-  //         switch: {type: Number, required: true, min: 1, max: 5},
-  //         edge_control: {type: Number, required: true, min: 1, max: 5},
-  //         park: {type: Number, required: true, min: 1, max: 5},
-  //         all_mountain: {type: Number, required: true, min: 1, max: 5},
-  //         back_country: {type: Number, required: true, min: 1, max: 5}
-  //       }
-  //     },
-  //     ski {}
-  //   },
-  //   bindings: {
-  //     size: Number,
-  //     brand: String,
-  //     model: String,
-  //     link: String
-  //   },
-  //   boots: {
-  //     size: Number,
-  //     brand: String,
-  //     model: String,
-  //     link: String
-  //   }
-  // },
   snowboardBrand: String,
   snowboardModel: String,
   snowboardSize: String,
@@ -76,6 +37,60 @@ var userSchema = new mongoose.Schema({
   bootsModel: String,
   bootsSize: String
 });
+
+var userInventorySchema = new mongoose.Schema({
+  snowboard: {
+    size: Number,
+    manufacturer: String,
+    model: String,
+    link: String
+  },
+  bindings: {
+    size: Number,
+    brand: String,
+    model: String,
+    link: String
+  },
+  boots: {
+    size: Number,
+    brand: String,
+    model: String,
+    link: String
+  }
+});
+
+var snowboardSchema = new mongoose.Schema({
+  brand: {
+    model: {
+      name: String,
+      year: Number,
+      flex: Number,
+      profile: String,
+      availableSizes: [{ }]
+    }
+  }
+});
+
+// var reviewSchema = new mongoose.Schema ({
+//   review: {
+//     created_at: Date,
+//     updated_at: Date,
+//     user_riding_style: {type: String, required: true},
+//     user_riding_ability: {type: String, required: true},
+//     would_recommend: {type: String, required: true},
+//     user_comment: {type: String, required: true},
+//     rating: {
+//       flex: {type: Number, required: true, min: 1, max: 5},
+//       speed: {type: Number, required: true, min: 1, max: 5},
+//       stability: {type: Number, required: true, min: 1, max: 5},
+//       switch: {type: Number, required: true, min: 1, max: 5},
+//       edge_control: {type: Number, required: true, min: 1, max: 5},
+//       park: {type: Number, required: true, min: 1, max: 5},
+//       all_mountain: {type: Number, required: true, min: 1, max: 5},
+//       back_country: {type: Number, required: true, min: 1, max: 5}
+//     }
+//   }
+// });
 
 userSchema.pre('save', function(next) {
   var user = this;
