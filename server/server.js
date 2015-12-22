@@ -38,7 +38,7 @@ var userSchema = new mongoose.Schema({
   bootsSize: String
 });
 
-var userInventorySchema = new mongoose.Schema({
+var inventorySchema = new mongoose.Schema({
   snowboard: {
     size: Number,
     manufacturer: String,
@@ -73,22 +73,21 @@ var snowboardSchema = new mongoose.Schema({
 var reviewSchema = new mongoose.Schema ({
   created_at: Date,
   updated_at: Date,
-  user_riding_style: {type: String, required: true},
-  user_riding_ability: {type: String, required: true},
-  user_comment: {type: String, required: true},
-  rating: {
-    flex: {type: Number, required: true, min: 1, max: 5},
-    speed: {type: Number, required: true, min: 1, max: 5},
-    stability: {type: Number, required: true, min: 1, max: 5},
-    switch: {type: Number, required: true, min: 1, max: 5},
-    edge_control: {type: Number, required: true, min: 1, max: 5},
-    park: {type: Number, required: true, min: 1, max: 5},
-    all_mountain: {type: Number, required: true, min: 1, max: 5},
-    back_country: {type: Number, required: true, min: 1, max: 5},
-    would_recommend: {type: String, required: true},
-    conclusion: {type: String, required: true},
-    comment: [{type: String, required: true}]
-  }
+  riding_style: {type: String, required: true},
+  riding_ability: {type: String, required: true},
+  stiffness: {type: Number, required: true, min: 1, max: 5},
+  speed: {type: Number, required: true, min: 1, max: 5},
+  stability: {type: Number, required: true, min: 1, max: 5},
+  switch: {type: Number, required: true, min: 1, max: 5},
+  edge_control: {type: Number, required: true, min: 1, max: 5},
+  jib: {type: Number, required: true, min: 1, max: 5},
+  park: {type: Number, required: true, min: 1, max: 5},
+  freestyle: {type: Number, required: true, min: 1, max: 5},
+  all_mountain: {type: Number, required: true, min: 1, max: 5},
+  powder: {type: Number, required: true, min: 1, max: 5},
+  would_recommend: {type: String, required: true},
+  conclusion: {type: String, required: true},
+  comment: [{type: String, required: true}]
 });
 
 userSchema.pre('save', function(next) {
@@ -111,6 +110,8 @@ userSchema.methods.comparePassword = function(password, done) {
 };
 
 var User = mongoose.model('User', userSchema);
+var Snowboard = mongoose.model('Snowboard', snowboardSchema);
+var userInventory = mongoose.model('userInventory', userInventorySchema);
 
 mongoose.connect(config.MONGO_URI);
 mongoose.connection.on('error', function(err) {
