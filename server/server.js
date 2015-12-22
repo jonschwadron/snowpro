@@ -110,8 +110,9 @@ userSchema.methods.comparePassword = function(password, done) {
 };
 
 var User = mongoose.model('User', userSchema);
+var Inventory = mongoose.model('Inventory', inventorySchema);
 var Snowboard = mongoose.model('Snowboard', snowboardSchema);
-var userInventory = mongoose.model('userInventory', userInventorySchema);
+var Review = mongoose.model('Review', reviewSchema);
 
 mongoose.connect(config.MONGO_URI);
 mongoose.connection.on('error', function(err) {
