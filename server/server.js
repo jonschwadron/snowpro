@@ -60,37 +60,36 @@ var userInventorySchema = new mongoose.Schema({
 });
 
 var snowboardSchema = new mongoose.Schema({
-  brand: {
-    model: {
+  brand: String,
+  model: {
       name: String,
       year: Number,
       flex: Number,
       profile: String,
-      availableSizes: [{ }]
-    }
+      availableSizes: [{ Number }]
   }
 });
 
-// var reviewSchema = new mongoose.Schema ({
-//   review: {
-//     created_at: Date,
-//     updated_at: Date,
-//     user_riding_style: {type: String, required: true},
-//     user_riding_ability: {type: String, required: true},
-//     would_recommend: {type: String, required: true},
-//     user_comment: {type: String, required: true},
-//     rating: {
-//       flex: {type: Number, required: true, min: 1, max: 5},
-//       speed: {type: Number, required: true, min: 1, max: 5},
-//       stability: {type: Number, required: true, min: 1, max: 5},
-//       switch: {type: Number, required: true, min: 1, max: 5},
-//       edge_control: {type: Number, required: true, min: 1, max: 5},
-//       park: {type: Number, required: true, min: 1, max: 5},
-//       all_mountain: {type: Number, required: true, min: 1, max: 5},
-//       back_country: {type: Number, required: true, min: 1, max: 5}
-//     }
-//   }
-// });
+var reviewSchema = new mongoose.Schema ({
+  created_at: Date,
+  updated_at: Date,
+  user_riding_style: {type: String, required: true},
+  user_riding_ability: {type: String, required: true},
+  user_comment: {type: String, required: true},
+  rating: {
+    flex: {type: Number, required: true, min: 1, max: 5},
+    speed: {type: Number, required: true, min: 1, max: 5},
+    stability: {type: Number, required: true, min: 1, max: 5},
+    switch: {type: Number, required: true, min: 1, max: 5},
+    edge_control: {type: Number, required: true, min: 1, max: 5},
+    park: {type: Number, required: true, min: 1, max: 5},
+    all_mountain: {type: Number, required: true, min: 1, max: 5},
+    back_country: {type: Number, required: true, min: 1, max: 5},
+    would_recommend: {type: String, required: true},
+    conclusion: {type: String, required: true},
+    comment: [{type: String, required: true}]
+  }
+});
 
 userSchema.pre('save', function(next) {
   var user = this;
