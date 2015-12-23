@@ -1,9 +1,3 @@
-/**
- * Satellizer Node.js Example
- * (c) 2015 Sahat Yalkabov
- * License: MIT
- */
-
 var path = require('path');
 var qs = require('querystring');
 
@@ -22,6 +16,8 @@ var request = require('request');
 var config = require('./config');
 
 var userSchema = new mongoose.Schema({
+  created_at: Date,
+  updated_at: Date,
   email: { type: String, unique: true, lowercase: true },
   password: { type: String, select: false },
   displayName: String,
@@ -39,6 +35,8 @@ var userSchema = new mongoose.Schema({
 });
 
 var inventorySchema = new mongoose.Schema({
+  created_at: Date,
+  updated_at: Date,
   snowboard: {
     size: Number,
     manufacturer: String,
@@ -60,14 +58,15 @@ var inventorySchema = new mongoose.Schema({
 });
 
 var snowboardSchema = new mongoose.Schema({
+  created_at: Date,
+  updated_at: Date,
   brand: String,
-  model: {
-      name: String,
-      year: Number,
-      flex: Number,
-      profile: String,
-      availableSizes: [{ Number }]
-  }
+  model: String,
+  name: String,
+  year: Number,
+  flex: Number,
+  profile: String,
+  sizes: [{ Number }]
 });
 
 var reviewSchema = new mongoose.Schema ({
