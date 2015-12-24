@@ -16,77 +16,77 @@ var request = require('request');
 var config = require('./config');
 
 var userSchema = new mongoose.Schema({
-  created_at: Date,
-  updated_at: Date,
-  email: { type: String, unique: true, lowercase: true },
-  password: { type: String, select: false },
-  displayName: String,
-  picture: String,
-  instagram: String,
+  created_at:     Date,
+  updated_at:     Date,
+  email:          { type: String, unique: true, lowercase: true },
+  password:       { type: String, select: false },
+  displayName:    String,
+  picture:        String,
+  instagram:      String,
   snowboardBrand: String,
   snowboardModel: String,
-  snowboardSize: String,
-  bindingsBrand: String,
-  bindingsModel: String,
-  bindingsSize: String,
-  bootsBrand: String,
-  bootsModel: String,
-  bootsSize: String
+  snowboardSize:  String,
+  bindingsBrand:  String,
+  bindingsModel:  String,
+  bindingsSize:   String,
+  bootsBrand:     String,
+  bootsModel:     String,
+  bootsSize:      String
 });
 
 var inventorySchema = new mongoose.Schema({
   created_at: Date,
   updated_at: Date,
   snowboard: {
-    size: Number,
+    size:         Number,
     manufacturer: String,
-    model: String,
-    link: String
+    model:        String,
+    link:         String
   },
   bindings: {
-    size: Number,
+    size:  Number,
     brand: String,
     model: String,
-    link: String
+    link:  String
   },
   boots: {
-    size: Number,
+    size:  Number,
     brand: String,
     model: String,
-    link: String
+    link:  String
   }
 });
 
 var snowboardSchema = new mongoose.Schema({
   created_at: Date,
   updated_at: Date,
-  brand: String,
-  model: String,
-  name: String,
-  year: Number,
-  flex: Number,
-  profile: String,
-  sizes: [{ Number }]
+  brand:      String,
+  model:      String,
+  name:       String,
+  year:       Number,
+  flex:       Number,
+  profile:    String,
+  sizes:   [{ Number }]
 });
 
 var reviewSchema = new mongoose.Schema ({
-  created_at: Date,
-  updated_at: Date,
-  riding_style: {type: String, required: true},
-  riding_ability: {type: String, required: true},
-  stiffness: {type: Number, required: true, min: 1, max: 5},
-  speed: {type: Number, required: true, min: 1, max: 5},
-  stability: {type: Number, required: true, min: 1, max: 5},
-  switch: {type: Number, required: true, min: 1, max: 5},
-  edge_control: {type: Number, required: true, min: 1, max: 5},
-  jib: {type: Number, required: true, min: 1, max: 5},
-  park: {type: Number, required: true, min: 1, max: 5},
-  freestyle: {type: Number, required: true, min: 1, max: 5},
-  all_mountain: {type: Number, required: true, min: 1, max: 5},
-  powder: {type: Number, required: true, min: 1, max: 5},
+  created_at:      Date,
+  updated_at:      Date,
+  riding_style:    {type: String, required: true},
+  riding_ability:  {type: String, required: true},
+  stiffness:       {type: Number, required: true, min: 1, max: 5},
+  speed:           {type: Number, required: true, min: 1, max: 5},
+  stability:       {type: Number, required: true, min: 1, max: 5},
+  switch:          {type: Number, required: true, min: 1, max: 5},
+  edge_control:    {type: Number, required: true, min: 1, max: 5},
+  jib:             {type: Number, required: true, min: 1, max: 5},
+  park:            {type: Number, required: true, min: 1, max: 5},
+  freestyle:       {type: Number, required: true, min: 1, max: 5},
+  all_mountain:    {type: Number, required: true, min: 1, max: 5},
+  powder:          {type: Number, required: true, min: 1, max: 5},
   would_recommend: {type: String, required: true},
-  conclusion: {type: String, required: true},
-  comment: [{type: String, required: true}]
+  conclusion:      {type: String, required: true},
+  comment:        [{type: String, required: true}]
 });
 
 userSchema.pre('save', function(next) {
