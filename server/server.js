@@ -15,6 +15,14 @@ var request = require('request');
 
 var config = require('./config');
 
+var RSS = require('rss');
+var feed = new RSS({
+  title: 'title',
+  feed_url: 'http://snowboarding.transworld.net/feed/'
+});
+
+var xml = feed.xml();
+
 var userSchema = new mongoose.Schema({
   created_at:     Date,
   updated_at:     Date,
